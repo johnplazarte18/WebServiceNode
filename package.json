@@ -1,21 +1,22 @@
 {
-  "name": "webnode",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cookie-parser": "^1.4.5",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "http-errors": "^1.7.2",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.12",
-    "pg": "^8.7.1"
-  }
+    "name": "src",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    },
+    "dependencies": {
+        "D": "^1.0.0",
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "dotenv": "^10.0.0",
+        "ejs": "^2.6.2",
+        "express": "~4.16.1",
+        "http-errors": "~1.6.3",
+        "morgan": "~1.9.1",
+        "pg": "^8.7.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    }
 }

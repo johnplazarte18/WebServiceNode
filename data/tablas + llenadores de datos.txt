@@ -1,0 +1,119 @@
+nombre de la base de datos: juegos_olimpicos
+
+
+
+CREATE TABLE public.deportes
+(
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    deporte character varying(40) COLLATE pg_catalog."default",
+    CONSTRAINT deportes_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.deportes
+    OWNER to postgres;
+
+
+
+
+CREATE TABLE public.eventos
+(
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    evento character varying(20) COLLATE pg_catalog."default",
+    CONSTRAINT eventos_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.eventos
+    OWNER to postgres;
+
+
+
+
+
+CREATE TABLE public.medallas
+(
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    medalla character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT medallas_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.medallas
+    OWNER to postgres;
+
+
+
+
+
+CREATE TABLE public.paises
+(
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    pais character varying(25) COLLATE pg_catalog."default",
+    iso3 character varying(3) COLLATE pg_catalog."default",
+    ruta_foto character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT paises_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.paises
+    OWNER to postgres;
+
+
+
+CREATE TABLE public.participantes
+(
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    participante character varying(50) COLLATE pg_catalog."default",
+    sexo character varying(10) COLLATE pg_catalog."default",
+    CONSTRAINT participantes_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.participantes
+    OWNER to postgres;
+
+
+
+
+CREATE TABLE public.victorias
+(
+    id character varying COLLATE pg_catalog."default" NOT NULL,
+    id_deporte character varying COLLATE pg_catalog."default" NOT NULL,
+    id_evento character varying COLLATE pg_catalog."default" NOT NULL,
+    id_medalla character varying COLLATE pg_catalog."default" NOT NULL,
+    id_pais character varying COLLATE pg_catalog."default" NOT NULL,
+    id_participante character varying COLLATE pg_catalog."default" NOT NULL,
+    competicion character varying(50) COLLATE pg_catalog."default" NOT NULL
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.victorias
+    OWNER to postgres;
+
+
+
+
+copy public.eventos (id, evento) 
+FROM 'C:/eventos.csv' DELIMITER ';' csv ENCODING 'utf-8';
+
+copy public.paises (id, pais, iso3, ruta_foto) 
+FROM 'C:/paises.csv' DELIMITER ';' csv ENCODING 'utf-8';
+
+copy public.participantes (id, participante, sexo) 
+FROM 'C:/participantes.csv' DELIMITER ';' csv ENCODING 'utf-8';
+
+copy public.deportes (id, deporte) 
+FROM 'C:/deportes.csv' DELIMITER ';' csv ENCODING 'utf-8';
+
+copy public.medallas (id, medalla) 
+FROM 'C:/medallas.csv' DELIMITER ';' csv ENCODING 'utf-8';
+
+copy public.victorias (id, id_evento, id_pais, id_medalla, id_participante, id_deporte, competicion) 
+FROM 'C:/victorias.csv' DELIMITER ';' csv ENCODING 'utf-8';
